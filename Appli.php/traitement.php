@@ -1,5 +1,5 @@
 <?php
-session_start();
+    session_start();
 
 if(isset($_POST['submit'])){            //Limite l'accès à traitrement.php ppar les seules requêtes HTTP de la soumission du formulaire
 
