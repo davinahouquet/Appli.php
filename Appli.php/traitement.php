@@ -16,7 +16,7 @@ if(isset($_POST['submit'])){            //Limite l'accès à traitrement.php ppa
                 "total" => $price *qtt
             ];
 
-            $_SESSION['product'][] = $product;
+            $_SESSION['product'][] = $product; //Doit aussi être un tableau pour pouvoir y stocker de nvx produits
     }
 }
 header("Location:index.php");
