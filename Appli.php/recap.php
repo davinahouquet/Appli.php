@@ -10,6 +10,12 @@
     <title>Récapitualtif des produits</title>
 </head>
 <body>
+<navbar>
+            <ul>
+                <li><a href="http://localhost/Davina/Appli.php/Appli.php/index.php">Accueil</a></li>
+                <li><a href="http://localhost/Davina/Appli.php/Appli.php/recap.php">Récapitulatif</a></li>
+            </ul>
+        </navbar>
     <?php 
         if(!isset($_SESSION['products']) || empty($_SESSION['products'])){
             echo "<p>Aucun produit en session...</p>";
