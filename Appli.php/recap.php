@@ -12,8 +12,8 @@
 </head>
 <body>
 <nav class="nav">
-    <a class="nav-link active" aria-current="page" href="http://localhost/Davina/Appli.php/Appli.php/index.php">Accueil</a>
-    <a class="nav-link active" aria-current="page" href="http://localhost/Davina/Appli.php/Appli.php/recap.php">Récapitulatif</a>
+    <a class="nav-link active" aria-current="page" href="http://localhost/Appli.php/Appli.php/index.php">Accueil</a>
+    <a class="nav-link active" aria-current="page" href="http://localhost/Appli.php/Appli.php/recap.php">Récapitulatif</a>
 </nav>
 
         <h1>Récapitulatif des produits</h1>
