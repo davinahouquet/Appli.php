@@ -23,11 +23,23 @@
         </li>
         <li class="nav-item">
           <a class="nav-link active" href="http://localhost/Appli.php/Appli.php/recap.php/">Récapitulatif</a>
-        </li>
+</li>
       </ul>
     </div>
   </div>
+ <a href="http://localhost/Appli.php/Appli.php/recap.php/">
+  <button type="button" class="btn btn-dark position-relative">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-bag-fill" viewBox="0 0 16 16">
+  <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z"/>
+Panier</svg></li>
+  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+    1
+    <span class="visually-hidden">unread messages</span>
+  </span>
+</button>
+</a>
 </nav>
+<div class="container-sm">
         <h1>Récapitulatif des produits</h1>
     <?php 
         if(!isset($_SESSION['products']) || empty($_SESSION['products'])){
@@ -67,6 +79,7 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-
+</div>
 </body>
 </html>
+<?php echo "Nb d'article : ".$product['qtt'] ?> 
