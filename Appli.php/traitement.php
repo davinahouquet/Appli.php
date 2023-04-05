@@ -1,6 +1,5 @@
 <?php
     session_start();
-
 if(isset($_POST['submit'])){            //Limite l'accès à traitrement.php ppar les seules requêtes HTTP de la soumission du formulaire
 
     $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS); //Supprime caractères spéciaux + balises HTML

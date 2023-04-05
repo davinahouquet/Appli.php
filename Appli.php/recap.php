@@ -19,21 +19,28 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="http://localhost/Appli.php/Appli.php/index.php/">Accueil</a>
+          <a class="nav-link" href="http://localhost/Appli.php/Appli.php/index.php">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="http://localhost/Appli.php/Appli.php/recap.php/">Récapitulatif</a>
+          <a class="nav-link active" href="http://localhost/Appli.php/Appli.php/recap.php">Récapitulatif</a>
 </li>
       </ul>
     </div>
   </div>
- <a href="http://localhost/Appli.php/Appli.php/recap.php/">
+ <a href="http://localhost/Appli.php/Appli.php/recap.php">
   <button type="button" class="btn btn-dark position-relative">
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-bag-fill" viewBox="0 0 16 16">
   <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z"/>
-Panier</svg></li>
+</svg></li>
   <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-    1
+  
+  <?php 
+  //$i = 0;
+  //foreach($_SESSION['products'] as $product){
+   // $i++;
+   // } 
+    ?>
+
     <span class="visually-hidden">unread messages</span>
   </span>
 </button>
