@@ -7,10 +7,17 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, inital-scale=1.0">
+        <link rel="stylesheet" href="style.css">
 
         <title>Ajout produit</title>
     </head>
     <body>
+    <navbar>
+            <ul>
+                <li><a href="http://localhost/Davina/Appli.php/Appli.php/index.php">Accueil</a></li>
+                <li><a href="http://localhost/Davina/Appli.php/Appli.php/recap.php">Récapitulatif</a></li>
+            </ul>
+        </navbar>
             <h1>Ajouter un produit</h1>
             <form action="traitement.php" method="post">
                 <p>
@@ -34,6 +41,6 @@
                 <p>
                     <input type="submit" name="submit" value="Ajouter le produit">
                 </p>
-            </form>
+            </form>            
     </body>
 </html>
