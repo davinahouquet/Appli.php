@@ -39,11 +39,14 @@ Panier</svg></li>
   session_start();
   
   //Pour afficher la quantité de produit dans le panier
+  if(empty($_SESSION['products'])){
+    echo "0";
+  } else {
   $totalGeneral = 0;
   foreach($_SESSION['products'] as $index => $product){
   $totalGeneral += $product['qtt'];
 } echo $totalGeneral;
-
+  }
   ?>
 
   </span>
@@ -52,7 +55,7 @@ Panier</svg></li>
 </nav>
 <div class="container-sm">
             <h1>Ajouter un produit</h1>
-            <form action="traitement.php" method="post">
+            <form action="traitement.php?action=addProduct" method="post">
                 <p>
                     <label>
                         Nom du produit :

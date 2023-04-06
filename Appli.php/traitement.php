@@ -1,26 +1,39 @@
 <?php
-    session_start();
-if(isset($_POST['submit'])){            //Si l'action d'envoyer le formulaire est bien faite
+session_start();
+if (isset($_GET['action'])) {
 
-    /* On filtre les inputs du formulaire */
-    $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS); //Supprime caractères spéciaux + balises HTML
-    $price = filter_input(INPUT_POST, "price", FILTER_VALIDATE_FLOAT,FILTER_FLAG_ALLOW_FRACTION); //Valide prix que si virgule ou point
-    $qtt = filter_input(INPUT_POST,"qtt", FILTER_SANITIZE_SPECIAL_CHARS); //Valide quantité que si c'est un entier différent de zéro
+    switch ($_GET['action']) {
+        case 'addProduct':
+            if (isset($_POST['submit'])) {            //Si l'action d'envoyer le formulaire est bien faite
 
- 
-    if($name && $price && $qtt){ 
+                /* On filtre les inputs du formulaire */
+                $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS); //Supprime caractères spéciaux + balises HTML
+                $price = filter_input(INPUT_POST, "price", FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION); //Valide prix que si virgule ou point
+                $qtt = filter_input(INPUT_POST, "qtt", FILTER_SANITIZE_SPECIAL_CHARS); //Valide quantité que si c'est un entier différent de zéro
 
-            $product = [ //Tabl associatif 
-                "name" => $name,
-                "price" => $price,
-                "qtt" => $qtt,
-                "total" => $price *$qtt
-            ];
-            $_SESSION['products'][] = $product; //Doit aussi être un tableau pour pouvoir y stocker de nvx produits
-            $_SESSION['message']= "Le produit " .$name. " a bien été ajouté";
-} else {
-    $_SESSION['message'] = "Erreur, le produit n'a pas été ajouté.";
+
+                if ($name && $price && $qtt) {
+
+                    $product = [ //Tabl associatif 
+                        "name" => $name,
+                        "price" => $price,
+                        "qtt" => $qtt,
+                        "total" => $price * $qtt
+                    ];
+                    $_SESSION['products'][] = $product; //Doit aussi être un tableau pour pouvoir y stocker de nvx produits
+                    $_SESSION['message'] = "Le produit " . $name . " a bien été ajouté";
+                } else {
+                    $_SESSION['message'] = "Erreur, le produit n'a pas été ajouté.";
+                }
+                header("Location:index.php");
+
+                //Pour supprimer un produit
+                $_SESSION['suppression'] = "Le produit " . $name . " a bien été supprimé.";
+            }
+            break;
+        case 'deleteAll':
+            unset($_SESSION['products']);
+            header("Location:recap.php");
+            break;
+    }
 }
-header("Location:index.php");
-}
-?>

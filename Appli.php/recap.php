@@ -35,13 +35,16 @@
   <span class="position-static top-0 start-100 translate-middle badge rounded-pill bg-danger">
 
   <?php 
-  
+  //if le panier est rempli sinon 
+  if(empty($_SESSION['products'])){
+    echo "0";
+  } else {
     $totalGeneral = 0;
     foreach($_SESSION['products'] as $index => $product){
     $totalGeneral += $product['qtt'];
 }  
   echo $totalGeneral;
-
+  }
     ?>
 
   </span>
@@ -73,19 +76,20 @@
                         "<td>".$index."</td>",                         //aura pour valeur l'index du tabl $_SESSION['product']parcouru.
                         "<td>".$product['name']."</td>",               //$product contiendra le produit sous forme de tabl, tel que créé et stocké en session fich traitement.php
                         "<td>".number_format($product['price'], 2, ",", "&nbsp;")."&nbsp;€</td>",
-                        "<td><button type='button' class='btn btn-outline-dark'>  -  </button>   ".$product['qtt']."   <button type='button' class='btn btn-outline-dark'> + </button></td>",
+                        "<td><a href='#'><button type='button' class='btn btn-outline-dark'>  -  </button></a>   ".$product['qtt']."   <a href='#'><button type='button' class='btn btn-outline-dark'> + </button></a></td>",
                         "<td>".number_format($product['total'], 2, ",", "&nbsp;")."&nbsp;€</td>",
-                        "<td><button type='button' class='btn-close' aria-label='Close'></button>";
+                        "<td><a><button type='button' class='btn-close' aria-label='Close'></button></a>";
                     "</tr>";                                          //La boucle créera ligne <tr>+ toutes les cellules <td> nécessaire à chaque partie du produit à afficher
                 $totalGeneral += $product['total'];
             }
             echo "<tr>",
                     "<td colspan = 4><strong>Total général : </strong></td>",
                     "<td><strong>".number_format($totalGeneral, 2, ",", "&nbsp;")."&nbsp;€</strong></td>",
-                    "<td><button type='button' class='btn-close' aria-label='Close'></button></td>",
+                    "<td><a href='#'><button type='button' class='btn-close' aria-label='Close'></button></a></td>",
                     "</tr>",
                     "</tbody>",
                 "</table>";
+                echo "<a href='traitement.php?action=deleteAll'>vider panier</a>";
         }
 
         ?>
