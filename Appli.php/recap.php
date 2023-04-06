@@ -32,15 +32,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-bag-fill" viewBox="0 0 16 16">
   <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z"/>
 </svg></li>
-  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+  <span class="position-static top-0 start-100 translate-middle badge rounded-pill bg-danger">
 
   <?php 
   // Resta à faire : faire le foreach qui affichera la qtt de produit dans le badge
 
-    $i = 0;
+    $totalGeneral = 0;
     foreach($_SESSION['products'] as $index => $product){
-    $i++;
-} 
+    $totalGeneral += $product['qtt'];
+}  
+  echo $totalGeneral;
     ?>
 
     <span class="visually-hidden">unread messages</span>
@@ -91,4 +92,3 @@
 </div>
 </body>
 </html>
-<?php echo "Nb d'article : ".$product['qtt'] ?> 
