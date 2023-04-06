@@ -22,18 +22,38 @@ if (isset($_GET['action'])) {
                     ];
                     $_SESSION['products'][] = $product; //Doit aussi être un tableau pour pouvoir y stocker de nvx produits
                     $_SESSION['message'] = "Le produit " . $name . " a bien été ajouté";
+                    $_SESSION['totalQtt']+=$qtt;
                 } else {
                     $_SESSION['message'] = "Erreur, le produit n'a pas été ajouté.";
                 }
                 header("Location:index.php");
-
-                //Pour supprimer un produit
-                $_SESSION['suppression'] = "Le produit " . $name . " a bien été supprimé.";
             }
             break;
+
+        //Pour supprimer tous les articles
         case 'deleteAll':
             unset($_SESSION['products']);
             header("Location:recap.php");
             break;
+
+        //Pour supprimer un article
+        case 'delete':
+            unset($_SESSION['products'][$_GET['index']]);
+            header('Location:recap.php');
+
+            break;
+        
+        //Pour augmenter la quantité d'un produit
+    //     case 'increaseProduct':
+          
+
+    //     header("Location:recap.php");
+    // }  break;
+
+        //Pour diminuer la quantité d'un produit
+            // case 'decreaseProduct':
+
+    //     header("Location:recap.php");
+    // }  break;
     }
 }

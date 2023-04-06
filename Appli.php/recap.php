@@ -78,18 +78,18 @@
                         "<td>".number_format($product['price'], 2, ",", "&nbsp;")."&nbsp;€</td>",
                         "<td><a href='#'><button type='button' class='btn btn-outline-dark'>  -  </button></a>   ".$product['qtt']."   <a href='#'><button type='button' class='btn btn-outline-dark'> + </button></a></td>",
                         "<td>".number_format($product['total'], 2, ",", "&nbsp;")."&nbsp;€</td>",
-                        "<td><a><button type='button' class='btn-close' aria-label='Close'></button></a>";
+                        "<td><a href='traitement.php?action=delete&index=$index'><button type='button' class='btn-close' aria-label='Close'></button></a>";
                     "</tr>";                                          //La boucle créera ligne <tr>+ toutes les cellules <td> nécessaire à chaque partie du produit à afficher
                 $totalGeneral += $product['total'];
             }
             echo "<tr>",
                     "<td colspan = 4><strong>Total général : </strong></td>",
                     "<td><strong>".number_format($totalGeneral, 2, ",", "&nbsp;")."&nbsp;€</strong></td>",
-                    "<td><a href='#'><button type='button' class='btn-close' aria-label='Close'></button></a></td>",
+                    "<td><a href='traitement.php?action=deleteAll'><button type='button' class='btn-close' aria-label='Close'></button></a></td>",
                     "</tr>",
                     "</tbody>",
                 "</table>";
-                echo "<a href='traitement.php?action=deleteAll'>vider panier</a>";
+                
         }
 
         ?>
