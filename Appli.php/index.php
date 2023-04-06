@@ -37,12 +37,12 @@ Panier</svg></li>
   <?php 
   
   session_start();
-
+  
+  //Pour afficher la quantité de produit dans le panier
   $totalGeneral = 0;
   foreach($_SESSION['products'] as $index => $product){
   $totalGeneral += $product['qtt'];
-}  
-echo $totalGeneral;
+} echo $totalGeneral;
 
   ?>
 
@@ -76,6 +76,13 @@ echo $totalGeneral;
                 </p>
             </form>    
 </div>  
+<?php
+
+$message = (isset($_SESSION['message']))?
+$_SESSION['message']: null;
+echo $message;
+
+?>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>      
         </body>
 </html>
