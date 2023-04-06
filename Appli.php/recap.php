@@ -35,16 +35,15 @@
   <span class="position-static top-0 start-100 translate-middle badge rounded-pill bg-danger">
 
   <?php 
-  // Resta à faire : faire le foreach qui affichera la qtt de produit dans le badge
-
+  
     $totalGeneral = 0;
     foreach($_SESSION['products'] as $index => $product){
     $totalGeneral += $product['qtt'];
 }  
   echo $totalGeneral;
+
     ?>
 
-    <span class="visually-hidden">unread messages</span>
   </span>
 </button>
 </a>
