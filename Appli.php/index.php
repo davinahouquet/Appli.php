@@ -78,9 +78,9 @@ Panier</svg></li>
 </div>  
 <?php
 
-$message = (isset($_SESSION['message']))?
-$_SESSION['message']: null;
-echo $message;
+$erreur = (isset($_SESSION['erreur']))?
+$_SESSION['erreur']: null;
+echo $erreur;
 
 ?>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>      

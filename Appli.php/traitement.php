@@ -19,7 +19,7 @@ if(isset($_POST['submit'])){            //Si l'action d'envoyer le formulaire es
             $_SESSION['products'][] = $product; //Doit aussi être un tableau pour pouvoir y stocker de nvx produits
             $_SESSION['message']= "Le produit " .$name. " a bien été ajouté";
 } else {
-    $_SESSION['message'] = "Message d'erreur";
+    $_SESSION['erreur'] = "Message d'erreur";
 }
 header("Location:index.php");
 }
