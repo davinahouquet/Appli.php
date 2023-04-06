@@ -78,8 +78,8 @@ Panier</svg></li>
 </div>  
 <?php
 
-$erreur = (isset($_SESSION['erreur']))?
-$_SESSION['erreur']: null;
+$erreur = (isset($_SESSION['message']))?
+$_SESSION['message']: null;
 echo $erreur;
 
 ?>
