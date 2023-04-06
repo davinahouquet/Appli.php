@@ -44,16 +44,17 @@ if (isset($_GET['action'])) {
             break;
         
         //Pour augmenter la quantité d'un produit
-    //     case 'increaseProduct':
-          
-
-    //     header("Location:recap.php");
-    // }  break;
+        case 'increaseProduct':
+          $_SESSION['products'][$_GET['index']]['qtt']++; //Returns $x, then increments $x by one
+          $_SESSION['products'][$_GET['index']]['total'] += $_SESSION['products'][$_GET['index']]['price'];
+        header("Location:recap.php");
+        break;
 
         //Pour diminuer la quantité d'un produit
-            // case 'decreaseProduct':
-
-    //     header("Location:recap.php");
-    // }  break;
+        case 'decreaseProduct':
+            $_SESSION['products'][$_GET['index']]['qtt']--; //Returns $x, then decrements $x by one
+            $_SESSION['products'][$_GET['index']]['total'] -= $_SESSION['products'][$_GET['index']]['price'];
+        header("Location:recap.php");
+        break;
     }
 }
