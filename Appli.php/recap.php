@@ -63,6 +63,7 @@
                             "<th>Prix</th>",
                             "<th>Quantité</th>",
                             "<th>Total</th>",
+                            "<th> </th>",
                         "</tr>",
                     "</thead>",
                     "<tbody>";
@@ -72,33 +73,22 @@
                         "<td>".$index."</td>",                         //aura pour valeur l'index du tabl $_SESSION['product']parcouru.
                         "<td>".$product['name']."</td>",               //$product contiendra le produit sous forme de tabl, tel que créé et stocké en session fich traitement.php
                         "<td>".number_format($product['price'], 2, ",", "&nbsp;")."&nbsp;€</td>",
-                        "<td>".$product['qtt']."</td>",
+                        "<td><button type='button' class='btn btn-outline-dark'>  -  </button>   ".$product['qtt']."   <button type='button' class='btn btn-outline-dark'> + </button></td>",
                         "<td>".number_format($product['total'], 2, ",", "&nbsp;")."&nbsp;€</td>",
+                        "<td><button type='button' class='btn-close' aria-label='Close'></button>";
                     "</tr>";                                          //La boucle créera ligne <tr>+ toutes les cellules <td> nécessaire à chaque partie du produit à afficher
                 $totalGeneral += $product['total'];
             }
             echo "<tr>",
-                    "<td colspan = 4>Total général : </td>",
+                    "<td colspan = 4><strong>Total général : </strong></td>",
                     "<td><strong>".number_format($totalGeneral, 2, ",", "&nbsp;")."&nbsp;€</strong></td>",
+                    "<td><button type='button' class='btn-close' aria-label='Close'></button></td>",
                     "</tr>",
                     "</tbody>",
                 "</table>";
         }
 
-
-    //-------------------Supprimer un produit en session-----------------------------
-
-
-
-
-    //-------------------Supprimer tous les produits en session en une seule fois----
-
-
-
-
-    //------------------Modifier les quantités de chaque produit---------------------
-    
-    ?>
+        ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </div>
 </body>
