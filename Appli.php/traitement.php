@@ -10,7 +10,7 @@ if (isset($_GET['action'])) {
                 $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS); //Supprime caractères spéciaux + balises HTML
                 $price = filter_input(INPUT_POST, "price", FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION); //Valide prix que si virgule ou point
                 $qtt = filter_input(INPUT_POST, "qtt", FILTER_SANITIZE_SPECIAL_CHARS); //Valide quantité que si c'est un entier différent de zéro
-
+                $details = filter_input(INPUT_POST, "details", FILTER_SANITIZE_SPECIAL_CHARS);
 
                 if ($name && $price && $qtt) {
 
@@ -23,6 +23,7 @@ if (isset($_GET['action'])) {
                     $_SESSION['products'][] = $product; //Doit aussi être un tableau pour pouvoir y stocker de nvx produits
                     $_SESSION['message'] = "Le produit " . $name . " a bien été ajouté";
                     $_SESSION['totalQtt']+=$qtt;
+                    $_SESSION['details'] = $details;
                 } else {
                     $_SESSION['message'] = "Erreur, le produit n'a pas été ajouté.";
                 }
@@ -47,7 +48,7 @@ if (isset($_GET['action'])) {
         case 'increaseProduct':
           $_SESSION['products'][$_GET['index']]['qtt']++; //Returns $x, then increments $x by one
           $_SESSION['products'][$_GET['index']]['total'] += $_SESSION['products'][$_GET['index']]['price'];
-        header("Location:recap.php");
+        header('Location:recap.php');
         break;
 
         //Pour diminuer la quantité d'un produit
@@ -60,7 +61,16 @@ if (isset($_GET['action'])) {
         } else {
             unset($_SESSION['products'][$_GET['index']]);
         }
-        header("Location:recap.php");
+        header('Location:recap.php');
+        break;
+    
+        //Pour afficher les détails de l'article
+        case 'details':
+
+           $_SESSION['products'][$_GET['index']]['name'];
+           $_SESSION['products'][$_GET['index']]['details'];
+
+        header('Location:recap.php'); 
         break;
     }
 }

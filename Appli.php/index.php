@@ -75,6 +75,11 @@ Panier</svg></li>
                     </label>
                 </p>
                 <p>
+                  <label>Description :
+                    <textarea type="text" name="details"  rows="1" cols="25"></textarea>
+                  </label>
+                </p>
+                <p>
                     <input type="submit" name="submit" value="Ajouter le produit">
                 </p>
             </form>    
