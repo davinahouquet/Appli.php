@@ -53,7 +53,7 @@ if (isset($_GET['action'])) {
 
         //Pour diminuer la quantité d'un produit
         case 'decreaseProduct':
-        if($_SESSION['products'][$_GET['index']]['qtt']>0){
+        if($_SESSION['products'][$_GET['index']]['qtt']>1){
             
             $_SESSION['products'][$_GET['index']]['qtt']--; //Returns $x, then decrements $x by one
             $_SESSION['products'][$_GET['index']]['total'] -= $_SESSION['products'][$_GET['index']]['price'];
@@ -65,12 +65,6 @@ if (isset($_GET['action'])) {
         break;
     
         //Pour afficher les détails de l'article
-        case 'details':
-
-           $_SESSION['products'][$_GET['index']]['name'];
-           $_SESSION['products'][$_GET['index']]['details'];
-
-        header('Location:recap.php'); 
-        break;
+       
     }
 }
