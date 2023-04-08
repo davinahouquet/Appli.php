@@ -18,7 +18,8 @@ if (isset($_GET['action'])) {
                         "name" => $name,
                         "price" => $price,
                         "qtt" => $qtt,
-                        "total" => $price * $qtt
+                        "total" => $price * $qtt,
+                        "details" => $details,
                     ];
                     $_SESSION['products'][] = $product; //Doit aussi être un tableau pour pouvoir y stocker de nvx produits
                     $_SESSION['message'] = "Le produit " . $name . " a bien été ajouté";
@@ -65,6 +66,9 @@ if (isset($_GET['action'])) {
         break;
     
         //Pour afficher les détails de l'article
-       
-    }
+        case 'details':
+            $_SESSION['products'][$_GET['index']]['details'] = $details;
+        header('Location:recap.php');
+        break;
+        }
 }
