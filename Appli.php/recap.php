@@ -74,7 +74,7 @@
             foreach($_SESSION['products'] as $index => $product){      //Pour chaque donnée dans $_SESSION['product'] il y a 2 variable dans la boucle
                 echo "<tr>",
                         "<td>".$index."</td>",                         //aura pour valeur l'index du tabl $_SESSION['product']parcouru.
-                        "<td><a href='traitement.php?action=details&index=$index'><button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal'>".$product['name']."</button></a></td>
+                        "<td><a href='traitement.php?action=details&index=$index'><button type='button' class='btn btn-light' data-bs-toggle='modal' data-bs-target='#exampleModal'>".$product['name']."</button></a></td>
                         <td>".number_format($product['price'], 2, ",", "&nbsp;")."&nbsp;€</td>",
                         "<td><a href='traitement.php?action=decreaseProduct&index=$index'><button type='button' class='btn btn-outline-dark'>  -  </button></a>   ".$product['qtt']."   <a href='traitement.php?action=increaseProduct&index=$index'><button type='button' class='btn btn-outline-dark'> + </button></a></td>",
                         "<td>".number_format($product['total'], 2, ",", "&nbsp;")."&nbsp;€</td>",
