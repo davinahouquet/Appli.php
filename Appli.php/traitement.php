@@ -67,7 +67,7 @@ if (isset($_GET['action'])) {
     
         //Pour afficher les détails de l'article
         case 'details':
-            $_SESSION['products'][$_GET['index']]['details'] = $details;
+            $_SESSION['products'][$_GET['index']]['details'];
         header('Location:recap.php');
         break;
         }

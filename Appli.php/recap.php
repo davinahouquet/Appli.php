@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Récapitualtif des produits</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -73,8 +74,28 @@
             $totalGeneral = 0;
             foreach($_SESSION['products'] as $index => $product){      //Pour chaque donnée dans $_SESSION['product'] il y a 2 variable dans la boucle
                 echo "<tr>",
-                        "<td>".$index."</td>",                         //aura pour valeur l'index du tabl $_SESSION['product']parcouru.
-                        "<td><a href='traitement.php?action=details&index=$index'><button type='button' class='btn btn-light' data-bs-toggle='modal' data-bs-target='#exampleModal'>".$product['name']."</button></a></td>
+                        "<td>".$index."</td>",                         
+                        "<td><a href='traitement.php?action=details&index=$index'><button type='button' class='btn btn-light' data-bs-toggle='modal' data-bs-target='#product-modal'>".$product['name']."</button><section class='bg-light'>
+                        <div class='container'>
+                          <div class='text-center'>
+                            <h2>".$product['name']."</h2>
+                              <p class='lead'>".$product['details']."</p>
+                            </div>
+                            <div class='row justify-content-center'></div>
+                        </section>
+                           <div class='modal fade' id='product-modal' tabindex='1' aria-labelledby='modal-title' aria-hidden='true'>
+                            <div class='modal-dialog'>
+                              <div class='modal-content'>
+                                <div class='modal-header>
+                                <h5 class='modal-title' id='modal-title'>Description</h5>
+                                <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                </div>
+                              <div class='modal-footer'>
+                            <button class='btn btn-primary'>Submit</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div></a></td>
                         <td>".number_format($product['price'], 2, ",", "&nbsp;")."&nbsp;€</td>",
                         "<td><a href='traitement.php?action=decreaseProduct&index=$index'><button type='button' class='btn btn-outline-dark'>  -  </button></a>   ".$product['qtt']."   <a href='traitement.php?action=increaseProduct&index=$index'><button type='button' class='btn btn-outline-dark'> + </button></a></td>",
                         "<td>".number_format($product['total'], 2, ",", "&nbsp;")."&nbsp;€</td>",
@@ -90,33 +111,12 @@
                     "</tbody>",
                 "</table>";
                 
-        }
- 
-        if(isset($_SESSION['details']) || !empty($_SESSION['details'])){
-          foreach($_SESSION['products'] as $index=>$product){
-          "<div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
-  <div class='modal-dialog'>
-    <div class='modal-content'>
-      <div class='modal-header'>
-        <h1 class='modal-title fs-5' id='exampleModalLabel'>".$product['name']."</h1>
-        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
-      </div>
-      <div class='modal-body'>
-        <p>".$product['details']."</p>
-      </div>
-      <div class='modal-footer'>
-        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
-        <button type='button' class='btn btn-primary'>Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>";
-        }
-      }
+            }
+
+
          
        ?>
        
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </div>
 </body>
 </html>

@@ -1,0 +1,8 @@
+section{
+    display: none;
+    position: fixed;
+}
+
+section:active{
+    display: contents;
+}
