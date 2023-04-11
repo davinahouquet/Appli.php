@@ -1,4 +1,4 @@
-/* #productModal{
+#productModal{
     display: none;
 
 }
@@ -6,4 +6,4 @@
 #productModal:target{
     display: block;
     position: absolute;
-} */
+}
