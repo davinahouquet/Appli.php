@@ -1,8 +1,13 @@
-section{
+#product-modal{
     display: none;
     position: fixed;
+    left:0;
+    top:0;
+    overflow: auto;
 }
-
-section:active{
-    display: contents;
+/* 
+#product-modal:target{
+    display: block;
+    position: absolute;
 }
+ */
