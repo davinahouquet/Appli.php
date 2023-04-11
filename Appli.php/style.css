@@ -1,13 +1,9 @@
-#product-modal{
+/* #productModal{
     display: none;
-    position: fixed;
-    left:0;
-    top:0;
-    overflow: auto;
+
 }
-/* 
-#product-modal:target{
+
+#productModal:target{
     display: block;
     position: absolute;
-}
- */
+} */

@@ -76,7 +76,7 @@
             foreach($_SESSION['products'] as $index => $product){      //Pour chaque donnée dans $_SESSION['product'] il y a 2 variable dans la boucle
                 echo "<tr>",
                         "<td>".$index."</td>",                         
-                        "<td><a href='traitement.php?action=details&index=$index'><button type='button' class='btn btn-light' data-toggle='modal' data-target='#productModal'>".$product['name']."</button></a></td>
+                        "<td><a href='traitement.php?action=details&index=$index'><button type='button' class='btn btn-light' data-toggle='modal' data-target='#productModal'>".$product['name']."</button></a>
 
                         <div id='productModal' class='modal fade' role='dialog'>
                           <div class='modal-dialog'>
@@ -87,7 +87,7 @@
                                 <h4 class='modal-title'>".$product['name']."</h4>
                               </div>
                               <div class='modal-body'>
-                                <p>Texte</p>
+                                <p>".$product['details']."</p>
                               </div>
                               <div class='modal-footer'>
                                 <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
@@ -96,7 +96,7 @@
                           
                           </div>
                         </div>
-
+                        </td>
                         <td>".number_format($product['price'], 2, ",", "&nbsp;")."&nbsp;€</td>",
                         "<td><a href='traitement.php?action=decreaseProduct&index=$index'><button type='button' class='btn btn-outline-dark'>  -  </button></a>   ".$product['qtt']."   <a href='traitement.php?action=increaseProduct&index=$index'><button type='button' class='btn btn-outline-dark'> + </button></a></td>",
                         "<td>".number_format($product['total'], 2, ",", "&nbsp;")."&nbsp;€</td>",
@@ -117,7 +117,7 @@
        ?>
        
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 </body>
 </html>
