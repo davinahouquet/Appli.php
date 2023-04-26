@@ -4,14 +4,14 @@ Ce qui ne change pas va dans le template -->
 
 <!-- ob_start commence l'enregistrement -->
 <?php 
-
+session_start();
 ob_start()
 
 ?>
 
 <div class="container-sm">
   <h1>Ajouter un produit</h1>
-    <form action="traitement.php?action=addProduct" method="post">
+    <form action="traitement.php?action=addProduct" method="post" enctype="multipart/form-data">
       <p>
         <label>Nom du produit :
           <input type="text" name="name">
@@ -33,6 +33,10 @@ ob_start()
         </label>
       </p>
       <p>
+        <!-- lorsque l’on ajoute des inputs de type « file », les données sont stockées dans la variable $_FILES. -->
+        <label for="file">Image</label>
+        <input type="file" name="file"><br><br>
+  
         <input type="submit" name="submit" value="Ajouter le produit">
       </p>
     </form>    

@@ -1,6 +1,8 @@
 <?php 
+// Si des informations de session sont demandées, il faut déclarer sessionstsart en haut. On ne peut pas require template ici, sinon la variable contenu ne sera pas déclarée
 
-ob_start() 
+session_start();
+ob_start()
 
 ?>
 
@@ -28,9 +30,11 @@ ob_start()
       foreach($_SESSION['products'] as $index => $product){ //Pour chaque donnée dans $_SESSION['product'] il y a 2 variable dans la boucle
         echo "<tr>",
               "<td>".$index."</td>",                         
-                "<td><a href='traitement.php?action=details&index=$index'><button type='button' class='btn btn-light' data-toggle='modal' data-target='#productModal'>".$product['name']."</button></a>
-                  <div id='productModal' class='modal fade' role='dialog'>
+                "<td><button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal'>".$product['name']."</button>
+
+                <div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                     <div class='modal-dialog'>
+
                       <div class='modal-content'>
                         <div class='modal-header'>
                           <button type='button' class='close' data-dismiss='modal'>&times;</button>
@@ -40,11 +44,13 @@ ob_start()
                           <p>".$product['details']."</p>
                         </div>
                         <div class='modal-footer'>
-                          <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                          <button type='button' class='btn btn-default' data-bs-dismiss='modal'>Close</button>
                         </div>
                       </div>
+
                     </div>
                   </div>
+
                     </td>
                     <td>".number_format($product['price'], 2, ",", "&nbsp;")."&nbsp;€</td>",
                     "<td><a href='traitement.php?action=decreaseProduct&index=$index'><button type='button' class='btn btn-outline-dark'>  -  </button></a>   ".$product['qtt']."   <a href='traitement.php?action=increaseProduct&index=$index'><button type='button' class='btn btn-outline-dark'> + </button></a></td>",

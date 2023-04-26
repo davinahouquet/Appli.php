@@ -11,6 +11,7 @@ if (isset($_GET['action'])) {
                 $price = filter_input(INPUT_POST, "price", FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION); //Valide prix que si virgule ou point
                 $qtt = filter_input(INPUT_POST, "qtt", FILTER_SANITIZE_SPECIAL_CHARS); //Valide quantité que si c'est un entier différent de zéro
                 $details = filter_input(INPUT_POST, "details", FILTER_SANITIZE_SPECIAL_CHARS);
+                $file = filter_input(INPUT_POST, "file", FILTER_SANITIZE_SPECIAL_CHARS);
 
                 if ($name && $price && $qtt) {
 
@@ -20,11 +21,13 @@ if (isset($_GET['action'])) {
                         "qtt" => $qtt,
                         "total" => $price * $qtt,
                         "details" => $details,
+                        "file" => $file,
                     ];
                     $_SESSION['products'][] = $product; //Doit aussi être un tableau pour pouvoir y stocker de nvx produits
                     $_SESSION['message'] = "Le produit " . $name . " a bien été ajouté";
                     $_SESSION['totalQtt']+=$qtt;
                     $_SESSION['details'] = $details;
+                    $_SESSION['file'] = $file;
                 } else {
                     $_SESSION['message'] = "Erreur, le produit n'a pas été ajouté.";
                 }
@@ -72,3 +75,18 @@ if (isset($_GET['action'])) {
         break;
         }
 }
+// var_dump($_POST);
+// var_dump($_FILES);
+
+//----Tentative ajout de fichier / https://www.php.net/manual/fr/function.move-uploaded-file.php-----
+if(isset($_SESSION['file'])){
+    $tmpName = $_SESSION['file']['tmp_name']; //Nom temporaire
+    $nameFile = $_SESSION['file']['name'];        
+    $size = $_SESSION['file']['size'];
+    $error = $_SESSION['file']['error'];
+}
+move_uploaded_file($tmpName, './upload/' .$name);
+
+// $contenu = contient les informations enregistrées dans index et recap
+
+//on pourra mettre img src="./upload.$name"
