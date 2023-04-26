@@ -30,18 +30,18 @@ ob_start()
       foreach($_SESSION['products'] as $index => $product){ //Pour chaque donnée dans $_SESSION['product'] il y a 2 variable dans la boucle
         echo "<tr>",
               "<td>".$index."</td>",                         
-                "<td><button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal'>".$product['name']."</button>
+                "<td><button type='button' class='btn btn-light' data-bs-toggle='modal' data-bs-target='#exampleModal'>".$product['name']."</button>
 
                 <div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                     <div class='modal-dialog'>
-
+              
                       <div class='modal-content'>
                         <div class='modal-header'>
-                          <button type='button' class='close' data-dismiss='modal'>&times;</button>
                             <h4 class='modal-title'>".$product['name']."</h4>
                         </div>
                         <div class='modal-body'>
                           <p>".$product['details']."</p>
+                          <img src='upload/".$nameFile."/>
                         </div>
                         <div class='modal-footer'>
                           <button type='button' class='btn btn-default' data-bs-dismiss='modal'>Close</button>
