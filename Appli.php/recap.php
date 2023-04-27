@@ -30,9 +30,9 @@ ob_start()
       foreach($_SESSION['products'] as $index => $product){ //Pour chaque donnée dans $_SESSION['product'] il y a 2 variable dans la boucle
         echo "<tr>",
               "<td>".$index."</td>",                         
-                "<td><button type='button' class='btn btn-light' data-bs-toggle='modal' data-bs-target='#exampleModal'>".$product['name']."</button>
+                "<td><button type='button' class='btn btn-light' data-bs-toggle='modal' data-bs-target='#exampleModal$index'>".$product['name']."</button>
 
-                <div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                <div class='modal fade' id='exampleModal$index' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                     <div class='modal-dialog'>
               
                       <div class='modal-content'>
@@ -41,7 +41,7 @@ ob_start()
                         </div>
                         <div class='modal-body'>
                           <p>".$product['details']."</p>
-                          <img src='upload/".$name."/>
+                          <img width='100%' src='./upload/".$_SESSION['products'][$index]['file']."'/>
                         </div>
                         <div class='modal-footer'>
                           <button type='button' class='btn btn-default' data-bs-dismiss='modal'>Close</button>
@@ -67,10 +67,13 @@ ob_start()
               "</tbody>",
               "</table>";
                 
+              echo $_SESSION['products'][$index]['file'];
+              echo $product['file'];
+              // echo $_SESSION['products'][$index]['file'];
       }
-
 $contenu = ob_get_clean();
 $titre = "Recapitulatif";
 require "template.php";
 
 ?>
+

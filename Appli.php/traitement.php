@@ -12,9 +12,22 @@ if (isset($_GET['action'])) {
                     $size = $_FILES['file']['size'];
                     $error = $_FILES['file']['error'];
                 }
+                $tabExtension = explode('.', $nameFile);
+                $extension = strtolower(end($tabExtension));
+                $extensions = ['jpg', 'png', 'jpeg', 'gif'];
+
+                $maxSize = 4000000;
+
+                    if (in_array($extension, $extensions) && $size <= $maxSize && $error == 0) {
+                        $uniqueName = uniqid('', true);
+                        //uniqid génère quelque chose comme ca : 5f586bf96dcd38.73540086
+                        $file = $uniqueName . "." . $extension;
+                        //$file = 5f586bf96dcd38.73540086.jpg
+                        move_uploaded_file($tmpName, 'upload/' . $file);
+                    }
                 // var_dump($_FILES['file']);
-                die();
-                move_uploaded_file($tmpName, './upload/' .$nameFile);
+                // die();
+                
                 /* On filtre les inputs du formulaire */
                 $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS); //Supprime caractères spéciaux + balises HTML
                 $price = filter_input(INPUT_POST, "price", FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION); //Valide prix que si virgule ou point
@@ -29,7 +42,7 @@ if (isset($_GET['action'])) {
                         "qtt" => $qtt,
                         "total" => $price * $qtt,
                         "details" => $details,
-                        "file" => $name,
+                        "file" => $file,
                     ];
                     $_SESSION['products'][] = $product; //Doit aussi être un tableau pour pouvoir y stocker de nvx produits
                     $_SESSION['message'] = "Le produit " . $name . " a bien été ajouté";
