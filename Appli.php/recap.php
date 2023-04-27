@@ -41,7 +41,7 @@ ob_start()
                         </div>
                         <div class='modal-body'>
                           <p>".$product['details']."</p>
-                          <img src='upload/".$nameFile."/>
+                          <img src='upload/".$name."/>
                         </div>
                         <div class='modal-footer'>
                           <button type='button' class='btn btn-default' data-bs-dismiss='modal'>Close</button>

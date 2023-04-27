@@ -8,11 +8,11 @@ if (isset($_GET['action'])) {
                 //----Tentative ajout de fichier / https://www.php.net/manual/fr/function.move-uploaded-file.php-----
                 if(isset($_FILES['file'])){
                     $tmpName = $_FILES['file']['tmp_name']; //Nom temporaire
-                    $nameFile = $_FILES['file']['nameFile'];        
+                    $nameFile = $_FILES['file']['name'];        
                     $size = $_FILES['file']['size'];
                     $error = $_FILES['file']['error'];
                 }
-                var_dump($_FILES['file']);
+                // var_dump($_FILES['file']);
                 die();
                 move_uploaded_file($tmpName, './upload/' .$nameFile);
                 /* On filtre les inputs du formulaire */
@@ -29,7 +29,7 @@ if (isset($_GET['action'])) {
                         "qtt" => $qtt,
                         "total" => $price * $qtt,
                         "details" => $details,
-                        "file" => $nameFile,
+                        "file" => $name,
                     ];
                     $_SESSION['products'][] = $product; //Doit aussi être un tableau pour pouvoir y stocker de nvx produits
                     $_SESSION['message'] = "Le produit " . $name . " a bien été ajouté";
